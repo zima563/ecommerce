@@ -7,7 +7,7 @@ const signupValidator = Joi.object({
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
   ),
   rePassword: Joi.valid(Joi.ref("password")).required(),
-  age: Joi.string().pattern(/^[1-7][0-9]|80$/),
+  phone: Joi.string().pattern(/^[\\+]?[(]?[0-9]{3}[)]?[-\s\\.]?[0-9]{3}[-\s\\.]?[0-9]{4,6}$/),
 });
 
 const signinValidator = Joi.object({

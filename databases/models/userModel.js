@@ -19,7 +19,7 @@ const schema = new mongoose.Schema(
       type: String,
       required: [true, "password is required"],
     },
-    profileImg: {
+    phone: {
       type: String,
     },
     role: {
