@@ -14,7 +14,7 @@ const signup = catchError(async (req, res, next) => {
     { userId: user._id, role: user.role },
     process.env.JWT_KEY
   );
-  res.json({ msg: "success", token });
+  res.json({ msg: "success", userToken: token });
 });
 
 const signin = catchError(async (req, res, next) => {
@@ -25,7 +25,7 @@ const signin = catchError(async (req, res, next) => {
       { userId: user._id, role: user.role },
       process.env.JWT_KEY
     );
-    return res.json({ msg: "success", token });
+    return res.json({ msg: "success", userToken: token });
   }
   next(new apiError("email or password incorrect", 401));
 });
@@ -74,7 +74,7 @@ const resetPassword = catchError(async (req, res, next) => {
     process.env.JWT_KEY
   );
 
-  res.status(200).json({ msg: "reset password is success ", token });
+  res.status(200).json({ msg: "reset password is success ", userToken: token });
 });
 
 const changePassword = catchError(async (req, res, next) => {
@@ -88,7 +88,7 @@ const changePassword = catchError(async (req, res, next) => {
       password: req.body.newPassword,
       passwordChangedAt: Date.now(),
     });
-    return res.json({ msg: "success", token });
+    return res.json({ msg: "success", userToken: token });
   }
 
   next(new apiError("password incorrect", 401));
@@ -103,11 +103,11 @@ const logout = catchError(async (req, res, next) => {
 });
 
 const protectRoutes = catchError(async (req, res, next) => {
-  let { token } = req.headers;
+  let { userToken } = req.headers;
 
-  if (!token) return next(new apiError("not token provide", 401));
+  if (!userToken) return next(new apiError("not token provide", 401));
 
-  let decoded = Jwt.verify(token, process.env.JWT_KEY);
+  let decoded = Jwt.verify(userToken, process.env.JWT_KEY);
   let user = await userModel.findById(decoded.userId);
   if (!user) return next(new apiError("user not founnd"));
 
