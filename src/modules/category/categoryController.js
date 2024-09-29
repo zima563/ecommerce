@@ -1,4 +1,4 @@
-const { categoryModel } = require("../../../databases/models/categoryModel.js");
+const categoryModel = require("../../../databases/models/categoryModel.js");
 const {
   addOne,
   deleteOne,

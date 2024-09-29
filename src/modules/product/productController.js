@@ -1,4 +1,4 @@
-const { productModel } = require("../../../databases/models/productModel.js");
+const productModel = require("../../../databases/models/productModel.js");
 const {
   addOne,
   deleteOne,

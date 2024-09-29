@@ -1,4 +1,4 @@
-const { subcategoryModel } = require("../../../databases/models/subcategoryModel.js");
+const subcategoryModel = require("../../../databases/models/subcategoryModel.js");
 const {
   addOne,
   deleteOne,

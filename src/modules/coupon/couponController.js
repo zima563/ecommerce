@@ -1,4 +1,4 @@
-const { couponModel } = require("../../../databases/models/coponModel.js");
+const couponModel = require("../../../databases/models/coponModel.js");
 
 const {
   addOne,
