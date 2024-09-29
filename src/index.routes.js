@@ -18,7 +18,7 @@ const cors = require("cors");
 
 exports.bootstrap = (app) => {
 
-  app.use(cors());
+
   app.use('/webhook', express.raw({ type: 'application/json' }), createOnlineOrder);
   app.use(express.json());
   app.use("/", express.static("uploads"));
