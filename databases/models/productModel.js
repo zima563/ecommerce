@@ -82,7 +82,7 @@ schema.virtual("myReviews", {
 });
 
 schema.pre("findOne", function () {
-  this.populate("myReviews");
+  this.populate("myReviews", "category", "subcategory", "brand");
 });
 
 const productModel = mongoose.model("product", schema);
