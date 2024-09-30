@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const addProductVal = Joi.object({
-  title: Joi.string().min(2).max(20).required().trim(),
+  title: Joi.string().min(2).max(100).required().trim(),
   description: Joi.string().trim().required().min(2).max(150),
   quantity: Joi.number().optional().min(0),
   price: Joi.number().required().min(0),
