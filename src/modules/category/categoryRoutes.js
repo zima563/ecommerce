@@ -18,7 +18,7 @@ const { allowedTo, protectRoutes } = require("../auth/authControllers.js");
 
 const categoryRouter = express.Router();
 
-categoryRouter.use("/category/subcategories", subcategoryRouter);
+categoryRouter.use("/:category/subcategories", subcategoryRouter);
 
 categoryRouter
   .route("/")
