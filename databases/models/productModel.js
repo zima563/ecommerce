@@ -82,7 +82,9 @@ schema.virtual("myReviews", {
 });
 
 schema.pre("findOne", function () {
-  this.populate("category")
+  this.populate("category");
+  this.populate("subcategory");
+  this.populate("brand");
   this.populate("myReviews");
 });
 
