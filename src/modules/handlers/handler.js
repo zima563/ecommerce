@@ -45,6 +45,7 @@ const addOne = (model) => {
   return catchError(async (req, res, next) => {
     if (req.body.title) req.body.slug = slugify(req.body.title);
     if (req.body.name) req.body.slug = slugify(req.body.name);
+    if (req.params.category) req.body.category = req.params.category;
     if (req.file) req.body.image = req.file.filename;
 
     if (req.files?.imgCover) req.body.imgCover = req.files.imgCover[0].filename;
