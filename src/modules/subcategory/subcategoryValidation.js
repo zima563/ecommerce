@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const addSubcategoryVal = Joi.object({
-  name: Joi.string().min(2).max(20),
+  name: Joi.string().min(2).max(100),
   category: Joi.string().length(24).hex().required(),
 });
 
