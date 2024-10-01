@@ -88,6 +88,12 @@ schema.pre("findOne", function () {
   this.populate("myReviews");
 });
 
+schema.pre("find", function () {
+  this.populate("category");
+  this.populate("subcategory");
+  this.populate("brand");
+  this.populate("myReviews");
+});
 const productModel = mongoose.model("product", schema);
 
 module.exports = productModel;
