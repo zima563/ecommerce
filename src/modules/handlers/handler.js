@@ -51,7 +51,6 @@ const addOne = (model) => {
     if (req.files?.imgCover) req.body.imgCover = req.files.imgCover[0].filename;
     if (req.files?.images)
       req.body.images = req.files.images.map((val) => val.filename);
-    if (model == reviewModel) req.body.user = req.user._id;
     let document = new model(req.body);
 
     await document.save();
