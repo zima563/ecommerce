@@ -2,6 +2,7 @@ const productModel = require("../../../databases/models/productModel.js");
 const reviewModel = require("../../../databases/models/reviewModel.js");
 const catchError = require("../../middleware/catchError.js");
 const apiError = require("../../utils/apiError.js");
+const { getAll, getOne, updateOne, deleteOne } = require("../handlers/handler.js");
 
 const addReview = catchError(async (req, res, next) => {
   let product = await productModel.findById(req.params.id);
