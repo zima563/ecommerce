@@ -32,7 +32,7 @@ const addToCart = catchError(async (req, res, next) => {
     });
     calcTotalPrice(cart);
     await cart.save();
-    !cart && next(new apiError({ msq: "not cart found" }, 404));
+    !cart && res.json({ msq: "not cart found" });
     cart && res.json({ msg: "success", cart });
   } else {
     let item = isCartExist.cartItems.find(
