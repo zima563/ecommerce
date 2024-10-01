@@ -77,7 +77,7 @@ const getLoggedUserCart = catchError(async (req, res, next) => {
   let cart = await cartModel
     .findOne({ user: req.user._id })
     .populate("cartItems.product");
-  !cart && res.status(404).json({ msg: "cart not found" });
+  !cart && res.status(200).json({ msg: "cart not found" });
   cart && res.json({ msg: "success", cart });
 });
 
