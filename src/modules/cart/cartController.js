@@ -62,9 +62,9 @@ const removeItemFromCart = catchError(async (req, res, next) => {
 });
 
 const updateQTY = catchError(async (req, res, next) => {
-  let cart = await cartModel.findOne({ user: req.user._id });
+  let cart = await cartModel.findOne({ user: req.user._id }).populate("cartItems.product");
 
-  let item = cart.cartItems.find((item) => item._id == req.params.id).populate("cartItems.product");
+  let item = cart.cartItems.find((item) => item._id == req.params.id);
   if (!item) return next(new apiError("item not found", 404));
   item.quantity = req.body.quantity;
   calcTotalPrice(cart);
